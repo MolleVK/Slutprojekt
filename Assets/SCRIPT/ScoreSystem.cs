@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreSystem : MonoBehaviour
 {
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
 
-    public Text playerOneScoreText;
-    public Text PlayerTwoScoreText;
+    public TextMeshProUGUI playerOneScoreText;
+    public TextMeshProUGUI playerTwoScoreText;
 
     public void PlayerOneGoal()
     {
@@ -21,6 +21,6 @@ public class ScoreSystem : MonoBehaviour
     public void PlayerTwoGoal()
     {
         playerTwoScore++;
-        playerOneScoreText.text = playerTwoScore.ToString();
+        playerTwoScoreText.text = playerTwoScore.ToString();
     }
 }
