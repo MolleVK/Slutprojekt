@@ -588,6 +588,7 @@ MonoBehaviour:
   startSpeed: 5
   extraSpeed: 1
   maxExtraSpeed: 5
+  playerOneStart: 1
 --- !u!114 &704136884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,6 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482025b5ca4c9d048b91376ca26aca5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WinScore: 3
   playerOneScoreText: {fileID: 826275254}
   playerTwoScoreText: {fileID: 1787954901}
 --- !u!1 &2068833413

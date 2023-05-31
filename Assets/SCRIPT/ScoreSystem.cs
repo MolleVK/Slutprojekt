@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreSystem : MonoBehaviour
 {
+    public int WinScore;
+
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
 
@@ -16,11 +19,21 @@ public class ScoreSystem : MonoBehaviour
     {
         playerOneScore++;
         playerOneScoreText.text = playerOneScore.ToString();
+        CheckScore();
     }
 
     public void PlayerTwoGoal()
     {
         playerTwoScore++;
         playerTwoScoreText.text = playerTwoScore.ToString();
+        CheckScore();
+    }
+
+    private void CheckScore()
+    {
+        if (playerOneScore == WinScore || playerTwoScore == WinScore)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
