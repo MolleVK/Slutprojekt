@@ -20,7 +20,7 @@ public class PlayerOne : MonoBehaviour
     {
         float directionY = Input.GetAxisRaw("Vertical");
 
-        racketDirection =  new Vector2(0, directionY).normalized;
+        racketDirection = new Vector2(0, directionY).normalized;
     }
 
     private void FixedUpdate()
@@ -29,3 +29,5 @@ public class PlayerOne : MonoBehaviour
     }
 
 }
+
+//Både player one och two är tagna från video men fick lov att ändra många delar av koden då rackets inte originellt fungera, tyvärr har jag inga notes på vad dessa ändringar var..

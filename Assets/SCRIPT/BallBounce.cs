@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallBounce : MonoBehaviour
-
 {
     public BallMovement BallMovement;
     public ScoreSystem scoreSystem;
@@ -14,16 +13,7 @@ public class BallBounce : MonoBehaviour
         Vector3 racketPosition = collision.transform.position;
         float racketHeight = collision.collider.bounds.size.y;
 
-        float positionX;
-        if (collision.gameObject.name == "Player 1")
-        {
-            positionX = 1;
-        }
-
-        else
-        {
-            positionX = -1;
-        }
+        float positionX = (collision.gameObject.name == "Player 1") ? 1 : -1;
 
         float positionY = (ballPosition.y - racketPosition.y) / racketHeight;
 
@@ -33,23 +23,36 @@ public class BallBounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player 1" || collision.gameObject.name == "Player 2")
+        string gameObjectName = collision.gameObject.name;
+
+        bool isPlayerCollision = (gameObjectName == "Player 1" || gameObjectName == "Player 2");
+        bool isRightSideCollision = (gameObjectName == "Right Side");
+        bool isLeftSideCollision = (gameObjectName == "Left Side");
+
+        if (isPlayerCollision)
         {
             Bounce(collision);
         }
-
-        else if (collision.gameObject.name == "Right Side")
+        else
         {
-            scoreSystem.PlayerOneGoal();
-            BallMovement.playerOneStart = false;
-            StartCoroutine(BallMovement.Launch());
-        }
+            while (isRightSideCollision)
+            {
+                scoreSystem.PlayerOneGoal();
+                BallMovement.playerOneStart = false;
+                StartCoroutine(BallMovement.Launch());
+                break;
+            }
 
-        else if (collision.gameObject.name == "Left Side")
-        {
-            scoreSystem.PlayerTwoGoal();
-            BallMovement.playerOneStart = true;
-            StartCoroutine(BallMovement.Launch());
+            for (; isLeftSideCollision;)
+            {
+                scoreSystem.PlayerTwoGoal();
+                BallMovement.playerOneStart = true;
+                StartCoroutine(BallMovement.Launch());
+                break;
+            }
         }
     }
+    //Denna delen är gjort av mig själv och inte tagen från varken video eller internet (:
+    //visserligen orginelt tagen från video men gjorde om allt nu så nu är den typ orginell
 }
+

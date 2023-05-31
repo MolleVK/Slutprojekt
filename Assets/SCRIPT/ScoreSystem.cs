@@ -37,3 +37,4 @@ public class ScoreSystem : MonoBehaviour
         }
     }
 }
+//Score systemet är också tagen från samma video som alla sprites kommer ifrån med andra ord 'https://www.youtube.com/watch?v=JZvNFrS7wTM'
